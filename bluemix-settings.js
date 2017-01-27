@@ -13,11 +13,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  **/
-
 var path = require("path");
 var when = require("when");
 
 var cfenv = require("cfenv");
+
 var appEnv = cfenv.getAppEnv();
 
 var VCAP_APPLICATION = JSON.parse(process.env.VCAP_APPLICATION);
@@ -51,7 +51,10 @@ var settings = module.exports = {
     // Serve up the welcome page
     httpStatic: path.join(__dirname,"public"),
 
-    functionGlobalContext: { },
+    functionGlobalContext: { 
+    crc:requiere('crc')    
+    
+    },
 
     storageModule: require("./couchstorage")
 }
